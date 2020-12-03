@@ -178,8 +178,10 @@ int main(int argn, char **argv) {
 #endif
 
                 if( partition_config.save_partition ) {
+                        std::stringstream sstm;
+                        sstm << graph_filename << "." << partition_config.k << "p";
                         parallel_vector_io pvio;
-                        std::string filename("tmppartition.txtp");
+                        std::string filename(sstm.str());
                         pvio.writePartitionSimpleParallel(G, filename);
                 }
 
